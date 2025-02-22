@@ -1,0 +1,163 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+p {
+    margin: 0;
+}
+
+.p1 {
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.p2 {
+    margin-bottom: 1rem;
+}
+
+.p3 {
+    margin-bottom: 1rem;
+}
+
+.container {
+    display: flex;
+    gap: 60px;
+}
+
+.umbrella-preview {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin-right: 20px;
+}
+
+#umbrella-image,
+#logo-preview {
+    position: absolute;
+
+    left: 0;
+    width: 100%;
+
+    object-fit: contain;
+}
+
+#logo-preview {
+    bottom: 90px;
+    left: 50%;
+
+    transform: translateX(-50%);
+    width: 100px;
+}
+
+.customization-panel {
+    text-align: left;
+}
+
+.color-swatches {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.color-swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.color-swatch.blue {
+    background-color: #2196f3;
+}
+
+.color-swatch.pink {
+    background-color: #e91e63;
+}
+
+.color-swatch.yellow {
+    background-color: #ffc107;
+}
+
+.color-swatch.active {
+    border: 2px solid #333;
+    transform: scale(1.1);
+}
+
+#upload-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#upload-button img {
+    position: absolute;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+#upload-button span {
+    flex: 1;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    animation: spin 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+#loader img {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .umbrella-preview {
+        width: 100%;
+        max-width: 300px;
+        max-height: 300px;
+        margin-right: 0;
+    }
+
+    #logo-preview {
+        bottom: 80px;
+    }
+}

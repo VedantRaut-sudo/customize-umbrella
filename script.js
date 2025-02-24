@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         uploadIcon.classList.remove('hidden');
     }
 
-    // Function to reset logo
+    
     function resetLogo() {
         logoPreview.src = '';
         logoPreview.classList.add('hidden');
@@ -57,9 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
         removeIcon.classList.add('hidden');
     }
 
-    // Add click handler for remove icon
+    
     removeIcon.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent triggering upload button click
+        e.stopPropagation(); 
         resetLogo();
     });
 
@@ -68,10 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const color = swatch.dataset.color;
             const config = colorConfig[color];
 
-            // Show spinner immediately
+            
             showSpinner();
             
-            // Immediate updates
+
             colorSwatches.forEach(s => s.classList.remove('active'));
             swatch.classList.add('active');
             uploadButton.style.backgroundColor = config.buttonColor;
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 loaderPath.style.fill = config.buttonColor;
             }
 
-            // Fade out current image
+            
             umbrellaImage.classList.add('fade-out');
             if (!logoPreview.classList.contains('hidden')) {
                 logoPreview.classList.add('fade-out');
@@ -127,12 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
     logoUpload.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
-            // Update filename and show remove icon immediately
+            
             buttonText.textContent = file.name;
             removeIcon.classList.remove('hidden');
             showSpinner();
 
-            // Validate file size (5MB)
+
             if (file.size > 5 * 1024 * 1024) {
                 alert('File size must be less than 5MB');
                 resetLogo();
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Validate file type
+            
             const validTypes = ['image/jpeg', 'image/png'];
             if (!validTypes.includes(file.type)) {
                 alert('Only .jpg and .png files are allowed');
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const reader = new FileReader();
             reader.onload = (e) => {
-                // Show loader first
+                
                 loader.classList.remove('hidden');
                 loader.classList.remove('fade-out');
                 umbrellaImage.classList.add('fade-out');
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     logoPreview.classList.add('hidden');
                     
                     setTimeout(() => {
-                        // Update logo preview while loader is still showing
+
                         logoPreview.src = e.target.result;
                         
                         setTimeout(() => {

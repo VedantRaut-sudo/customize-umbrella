@@ -218,6 +218,10 @@ p {
         max-height: 300px;
         margin-right: 0;
     }
+    #logo-preview {
+        bottom: 20px;
+        width: 60px;
+        max-height: 50px;}
 }
 
 @keyframes spin {

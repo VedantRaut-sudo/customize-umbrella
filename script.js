@@ -67,10 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
         swatch.addEventListener('click', () => {
             const color = swatch.dataset.color;
             const config = colorConfig[color];
+            const hasExistingLogo = !logoPreview.classList.contains('hidden') && logoPreview.src;
 
-            
             showSpinner();
-            
 
             colorSwatches.forEach(s => s.classList.remove('active'));
             swatch.classList.add('active');
@@ -83,13 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             
             umbrellaImage.classList.add('fade-out');
-            if (!logoPreview.classList.contains('hidden')) {
+            if (hasExistingLogo) {
                 logoPreview.classList.add('fade-out');
             }
-            
+
             setTimeout(() => {
                 umbrellaImage.classList.add('hidden');
-                logoPreview.classList.add('hidden');
+                if (hasExistingLogo) {
+                    logoPreview.classList.add('hidden');
+                }
                 loader.classList.remove('hidden');
                 setTimeout(() => loader.classList.remove('fade-out'), 50);
 
@@ -101,18 +102,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         setTimeout(() => {
                             loader.classList.add('hidden');
+                            
+                            
                             umbrellaImage.classList.remove('hidden');
-                            if (!logoPreview.classList.contains('hidden')) {
+                            if (hasExistingLogo) {
                                 logoPreview.classList.remove('hidden');
                             }
                             hideSpinner();
-                            
-                            setTimeout(() => {
+
+
+                            requestAnimationFrame(() => {
                                 umbrellaImage.classList.remove('fade-out');
-                                if (!logoPreview.classList.contains('hidden')) {
+                                if (hasExistingLogo) {
                                     logoPreview.classList.remove('fade-out');
                                 }
-                            }, 50);
+                            });
                         }, 500);
                     }, 2000);
                 }, 500);
@@ -127,11 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
     logoUpload.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
-            
             buttonText.textContent = file.name;
             removeIcon.classList.remove('hidden');
             showSpinner();
-
 
             if (file.size > 5 * 1024 * 1024) {
                 alert('File size must be less than 5MB');
@@ -140,7 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            
             const validTypes = ['image/jpeg', 'image/png'];
             if (!validTypes.includes(file.type)) {
                 alert('Only .jpg and .png files are allowed');
@@ -151,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const reader = new FileReader();
             reader.onload = (e) => {
-                
                 loader.classList.remove('hidden');
                 loader.classList.remove('fade-out');
                 umbrellaImage.classList.add('fade-out');
@@ -162,7 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     logoPreview.classList.add('hidden');
                     
                     setTimeout(() => {
-
                         logoPreview.src = e.target.result;
                         
                         setTimeout(() => {
@@ -170,14 +169,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             
                             setTimeout(() => {
                                 loader.classList.add('hidden');
+                                
                                 umbrellaImage.classList.remove('hidden');
                                 logoPreview.classList.remove('hidden');
                                 hideSpinner();
                                 
-                                setTimeout(() => {
+
+                                requestAnimationFrame(() => {
                                     umbrellaImage.classList.remove('fade-out');
                                     logoPreview.classList.remove('fade-out');
-                                }, 50);
+                                });
                             }, 500);
                         }, 2000);
                     }, 500);

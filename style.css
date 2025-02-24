@@ -37,10 +37,12 @@ p {
     height: 400px;
     margin-right: 20px;
 }
-#umbrella-image{
+
+#umbrella-image {
     height: 100%;
     margin: auto;
 }
+
 #umbrella-image,
 #logo-preview {
     position: absolute;
@@ -145,10 +147,15 @@ p {
     justify-content: center;
 }
 
-.button-spinner svg,
+.button-spinner svg {
+    fill: currentColor;
+    animation: spin 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    opacity: 0.8;
+}
+
 #loader svg {
     fill: currentColor;
-    animation: spin 2s cubic-bezier(0.17, 0.67, 0.83, 0.67) infinite;
+    animation: spin 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
     opacity: 0.8;
 }
 
@@ -156,6 +163,7 @@ p {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -165,6 +173,7 @@ p {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -238,5 +247,5 @@ p {
         margin-right: 0;
     }
 
-   
+
 }

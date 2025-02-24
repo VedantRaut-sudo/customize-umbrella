@@ -101,8 +101,9 @@ p {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    padding: 10px 20px;
+    padding: 12px 50px;
     background-color: #007bff;
     color: white;
     font-weight: 700;
@@ -112,16 +113,81 @@ p {
     transition: background-color 0.3s ease;
 }
 
-#upload-button img {
+#upload-button .upload-icon,
+#upload-button .button-spinner {
     position: absolute;
-    left: 20px;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     width: 20px;
     height: 20px;
 }
 
-#upload-button span {
-    flex: 1;
+.button-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-spinner svg {
+    fill: currentColor;
+    animation: spin 1s cubic-bezier(0.17, 0.67, 0.83, 0.67) infinite;
+    opacity: 0.8;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.button-spinner.hidden {
+    display: none;
+}
+
+.button-spinner:not(.hidden) {
+    animation: fade-in 0.3s ease-in-out;
+}
+
+#upload-button .remove-icon {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    fill: currentColor;
+}
+
+#upload-button .remove-icon:hover {
+    opacity: 1;
+}
+
+#upload-button .button-text {
+    display: block;
     text-align: center;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 70px);
 }
 
 .hidden {

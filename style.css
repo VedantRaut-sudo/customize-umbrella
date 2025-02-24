@@ -73,28 +73,43 @@ p {
 }
 
 .color-swatch {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     margin: 5px;
-    border: 2px solid transparent;
+    border: 2px solid;
     cursor: pointer;
+    transition: border-width 0.3s ease, border-color 0.3s ease;
 }
 
 .color-swatch.blue {
     background-color: #2196f3;
+    border-color: #90caf9;
 }
 
 .color-swatch.pink {
     background-color: #e91e63;
+    border-color: #f48fb1;
 }
 
 .color-swatch.yellow {
     background-color: #ffc107;
+    border-color: #ffe082;
 }
 
-.color-swatch.active {
-    border-color: #333;
+.color-swatch.blue.active {
+    border-color: #90caf9;
+    border-width: 4px;
+}
+
+.color-swatch.pink.active {
+    border-color: #f48fb1;
+    border-width: 4px;
+}
+
+.color-swatch.yellow.active {
+    border-color: #ffe082;
+    border-width: 4px;
 }
 
 #upload-button {
